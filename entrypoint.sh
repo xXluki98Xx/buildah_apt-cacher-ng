@@ -34,5 +34,5 @@ update_config
 
 #---
 
-while true; do sleep 150s && echo clean && rm -v /acng-report* ; done &
+while true; do sleep 15s && rm -v /acng-report* 2>| /dev/null || echo clean ; done &
 bash /etc/init.d/apt-cacher-ng start && tail -f /var/log/apt-cacher-ng/*
