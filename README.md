@@ -1,0 +1,1 @@
+This project is a combination of the original works by [sameersbn](github.com/sameersbn) with [sameersbn/docker-apt-cacher-ng](github.com/sameersbn/docker-apt-cacher-ng) and [hudecof/apt-cacher-ng-remap](github.com/hudecof/apt-cacher-ng-remap) by [hudecof](www.github.com/hudecof), interpreted with buildah
