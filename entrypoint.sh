@@ -27,10 +27,23 @@ update_config(){
   sed "s#LogDir: /var/log/apt-cacher-ng#LogDir: ${APT_CACHER_NG_LOG_DIR}#" -i /etc/apt-cacher-ng/acng.conf
 }
 
+mirror_lists(){
+  if [ -z "$(ls -A /etc/apt-cacher-ng/mirror_list.d)" ]; then
+    echo "mirror lists doesnt exist, will created"
+    cd /mirror_scripts;
+    ./centos.sh;
+    ./fedora.sh;
+    ./fedora-epel.sh;
+    mv list.* /etc/apt-cacher-ng/mirror_list.d/;
+    echo "mirror lists created, starting server"
+  fi
+}
+
 create_pid_dir
 create_cache_dir
 create_log_dir
 update_config
+mirror_lists
 
 #---
 
