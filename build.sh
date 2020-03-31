@@ -29,8 +29,6 @@ fi
 ./centos.sh
 ./fedora.sh
 ./fedora-epel.sh
-./debian.sh
-./ubuntu.sh
 cd ../buildah_apt-cacher-ng
 
 #---
@@ -50,9 +48,10 @@ buildah commit $container
 buildah config \
 		--healthcheck-timeout 2s \
 		--healthcheck-retries 3 \
-		--healthcheck-interval 10s \
+		--healthcheck-interval 15s \
+		--healthcheck-start-period 30s \
 		--healthcheck "wget -q -t1 -o /dev/null  http://localhost:3142/acng-report.html || exit 1" \
-		--entrypoint /entrypoint.sh \
+		--cmd /entrypoint.sh \
 		--env APT_CACHER_NG_USER=apt-cacher-ng \
 		--env APT_CACHER_NG_LOG_DIR="/var/log/apt-cacher-ng" \
 		--env APT_CACHER_NG_CACHE_DIR="/var/cache/apt-cacher-ng" \

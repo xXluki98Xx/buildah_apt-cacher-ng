@@ -46,6 +46,6 @@ update_config
 mirror_lists
 
 #---
-
+# default behaviour is to launch apt-cacher-ng
 while true; do sleep 15s && rm -v /acng-report* 2>| /dev/null || echo clean ; done &
 bash /etc/init.d/apt-cacher-ng start && tail -f /var/log/apt-cacher-ng/*
