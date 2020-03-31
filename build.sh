@@ -11,7 +11,7 @@ buildah config --label maintainer="lRamm <lukas.ramm.1998@gmail.com>" $container
 #---
 # Install apt-cacher-ng
 buildah run $container apt update
-echo "no" >&1 | buildah run $container apt install -y apt-cacher-ng wget
+echo "yes" >&1 | buildah run $container apt install -y apt-cacher-ng wget
 buildah run $container rm -rf /var/lib/apt/lists/*
 buildah commit $container
 
